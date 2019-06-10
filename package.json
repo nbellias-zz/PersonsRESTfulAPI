@@ -1,0 +1,33 @@
+{
+  "name": "personsrestfulapi",
+  "version": "1.0.0",
+  "description": "Persons MongoDB database as a RESTful API with NodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nbellias/PersonsRESTfulAPI.git"
+  },
+  "keywords": [
+    "RESTful",
+    "API",
+    "Example"
+  ],
+  "author": "Nikolaos Bellias",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nbellias/PersonsRESTfulAPI/issues"
+  },
+  "homepage": "https://github.com/nbellias/PersonsRESTfulAPI#readme",
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.5.13",
+    "mongoose-paginate-v2": "^1.3.0"
+  }
+}
