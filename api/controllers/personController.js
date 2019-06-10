@@ -1,6 +1,5 @@
 'use strict';
 
-
 var mongoose = require('mongoose'),
   mongoosePaginate = require('mongoose-paginate-v2'),
   Person = mongoose.model('Persons');
@@ -12,7 +11,6 @@ exports.list_all_persons = function (req, res) {
     res.json(persons);
   });
 };
-
 
 exports.list_all_persons_by_page = function (req, res) {
   let recordPage = req.params.page;
@@ -40,7 +38,7 @@ exports.list_all_persons_by_page = function (req, res) {
     if (err)
       res.send(err);
     res.json(persons);
-  });
+  }).sort(req.body);
 };
 
 exports.create_a_person = function (req, res) {
