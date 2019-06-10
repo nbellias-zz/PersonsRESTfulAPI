@@ -31,22 +31,15 @@ exports.list_all_persons_by_page = function (req, res) {
   const options = {
     page: recordPage,
     limit: recordLimit,
+    sort: req.body,
     customLabels: myCustomLabels
   };
 
-  if (req.body) {
-    Person.paginate({}, options, function (err, persons) {
-      if (err)
-        res.send(err);
-      res.json(persons);
-    }).sort(req.body);
-  } else {
-    Person.paginate({}, options, function (err, persons) {
-      if (err)
-        res.send(err);
-      res.json(persons);
-    });
-  }
+  Person.paginate({}, options, function (err, persons) {
+    if (err)
+      res.send(err);
+    res.json(persons);
+  });
 
 };
 
