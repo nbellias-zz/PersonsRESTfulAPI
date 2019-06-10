@@ -33,12 +33,21 @@ exports.list_all_persons_by_page = function (req, res) {
     limit: recordLimit,
     customLabels: myCustomLabels
   };
-  
-  Person.paginate({}, options, function (err, persons) {
-    if (err)
-      res.send(err);
-    res.json(persons);
-  }).sort(req.body);
+
+  if (req.body) {
+    Person.paginate({}, options, function (err, persons) {
+      if (err)
+        res.send(err);
+      res.json(persons);
+    }).sort(req.body);
+  } else {
+    Person.paginate({}, options, function (err, persons) {
+      if (err)
+        res.send(err);
+      res.json(persons);
+    });
+  }
+
 };
 
 exports.create_a_person = function (req, res) {
