@@ -9,7 +9,7 @@ module.exports = function(app) {
     .post(personList.create_a_person);
   
   app.route('/personsbypage/:limit/:page')
-    .get(personList.list_all_persons_by_page);
+    .post(personList.list_all_persons_by_page);
 
   app.route('/persons/:personId')
     .get(personList.read_a_person)

@@ -28,6 +28,8 @@ exports.list_all_persons_by_page = function (req, res) {
     meta: 'paginator'
   };
 
+  //console.log(req.body);
+
   const options = {
     page: recordPage,
     limit: recordLimit,
