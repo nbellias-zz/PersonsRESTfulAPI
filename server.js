@@ -29,6 +29,12 @@ var usersRoutes = require('./api/routes/userRoutes'); //importing route
 personsRoutes(app);
 usersRoutes(app);
 
+app.get('/status', (req, res) => {
+  console.log('Checking API....')
+  res.status(200).send('API OK!');
+});
+
+
 app.listen(port);
 
 console.log('Persons & Users RESTful API server started on: ' + port);
