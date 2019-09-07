@@ -14,13 +14,3 @@ test('GET /status', (t) => {
     })
 })
 
-test('GET /demo', (t) => {
-  request(service)
-    .get('/demo')
-    .expect(200)
-    .end((err,res) => {
-      t.error(err)
-      t.deepEqual(res.body, {'demo': 'This is the GitlabCI Demo Api'})
-      t.end();
-    })
-})

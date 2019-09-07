@@ -6,7 +6,7 @@
   "scripts": {
     "test": "NODE_ENV=test tape test/**/*.js",
     "start": "node server.js",
-    "minifier": "minify src -d lib",
+    "minifier": "minify api -d lib",
     "deploy-stage": "echo 'Deploying to STAGING'",
     "deploy-prod": "echo 'Deploying to PRODUCTION'"
   },
