@@ -5,7 +5,6 @@ module.exports = function(app) {
   // personList Routes
   app.route('/persons')
     .get(personList.list_all_persons)
-    .get(personList.list_all_persons_by_page)
     .post(personList.create_a_person);
   
   app.route('/personsbypage/:limit/:page')
