@@ -2,7 +2,9 @@
 
 var mongoose = require('mongoose'),
   mongoosePaginate = require('mongoose-paginate-v2'),
-  User = mongoose.model('Users');
+  User = mongoose.model('Users'),
+  nodemailer = require('nodemailer');
+
 
 function createAppKey(length) {
   var result = '';
@@ -58,12 +60,35 @@ exports.list_all_users_by_page = function (req, res) {
 exports.create_a_user = function (req, res) {
   var new_user = new User(req.body);
   // SOS Here create App Key
-  new_user.appKey = createAppKey(10);
+  var newKey = createAppKey(10);
+  new_user.appKey = newKey;
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'nikolaos.bellias@gmail.com',
+      pass: 'N#k0l@os1967!'
+    }
+  });
+
+  var mailOptions = {
+    from: 'nikolaos.bellias@gmail.com',
+    to: new_user.email,
+    subject: 'Your Fortunet Mobile App Key',
+    text: 'Congratulations. Your key is ' + newKey
+  };
   //
   new_user.save(function (err, user) {
     if (err)
       res.send(err);
     res.json(user);
+  });
+  //
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
   });
 };
 
