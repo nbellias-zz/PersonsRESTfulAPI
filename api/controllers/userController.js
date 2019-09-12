@@ -4,6 +4,16 @@ var mongoose = require('mongoose'),
   mongoosePaginate = require('mongoose-paginate-v2'),
   User = mongoose.model('Users');
 
+function createAppKey(length) {
+  var result = '';
+  var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for (var i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+}
+
 exports.list_all_users = function (req, res) {
   User.find({}, function (err, users) {
     if (err)
@@ -47,6 +57,9 @@ exports.list_all_users_by_page = function (req, res) {
 
 exports.create_a_user = function (req, res) {
   var new_user = new User(req.body);
+  // SOS Here create App Key
+  new_user.appKey = createAppKey(10);
+  //
   new_user.save(function (err, user) {
     if (err)
       res.send(err);

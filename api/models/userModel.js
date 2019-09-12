@@ -42,6 +42,9 @@ var UserSchema = new Schema({
   dateCreated: {
     type: Date,
     default: Date.now
+  },
+  appKey: {
+    type: String
   }
 });
 
